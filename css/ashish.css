@@ -1,0 +1,141 @@
+/* Ashish Page Styles */
+.hero-ashish {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  min-height: 80vh;
+  padding-top: 140px;
+}
+
+.hero-img-ashish {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-img-ashish img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  filter: grayscale(100%);
+}
+
+.hero-content-ashish {
+  flex: 1;
+}
+
+.ashish-tag {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.hero-ashish h1 {
+  font-size: clamp(40px, 8vw, 72px);
+  margin-bottom: 24px;
+}
+
+.hero-ashish p {
+  font-size: 20px;
+  color: var(--color-gray-600);
+  margin-bottom: 40px;
+}
+
+.stat-pills {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pill-small {
+  padding: 8px 16px;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.service-card {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.service-card:hover { border-color: var(--color-black); }
+
+.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.service-content {
+  padding: 32px;
+}
+
+.service-content h3 { margin-bottom: 16px; }
+.service-content p { color: var(--color-gray-600); font-size: 15px; }
+
+/* Process */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.process-item {
+  position: relative;
+}
+
+.step-num {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--color-gray-200);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.process-item h4 { margin-bottom: 8px; }
+.process-item p { font-size: 14px; color: var(--color-gray-600); }
+
+/* Case Studies */
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.case-card {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.case-img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(100%); transition: var(--transition); }
+.case-card:hover .case-img { filter: grayscale(0%); }
+
+.case-content { padding: 32px; }
+.case-tag { font-size: 12px; font-weight: 700; color: var(--color-gray-600); text-transform: uppercase; margin-bottom: 8px; display: block; }
+.case-content h3 { margin-bottom: 12px; }
+.case-content p { font-size: 15px; color: var(--color-gray-600); }
+
+@media (max-width: 1024px) {
+  .hero-ashish { flex-direction: column; text-align: center; }
+  .stat-pills { justify-content: center; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .case-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .process-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,1056 @@
+<!-- VNA HOSPITAL — HEADER (ALL BUGS FIXED - FINAL) -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+  /* ── RESET ── */
+  #vna-wrap,
+  #vna-wrap *,
+  #vna-drawer,
+  #vna-drawer *,
+  #vna-overlay {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #vna-wrap a,
+  #vna-drawer a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #vna-wrap ul,
+  #vna-drawer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── TOP BAR ── */
+  #vna-topbar {
+    background: #1B4B8A;
+    padding: 0 5%;
+    min-height: 48px;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+  }
+
+  #vna-topbar .tb-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  #vna-topbar .tb-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .84rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .82);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #vna-topbar .tb-item svg {
+    opacity: .75;
+    flex-shrink: 0;
+  }
+
+  #vna-topbar .tb-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  #vna-topbar .tb-phone {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+
+  #vna-topbar .nabh-badge {
+    background: rgba(46, 158, 79, .28);
+    color: #7de89d;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    padding: 5px 13px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  #vna-topbar .nabh-badge img {
+    height: 22px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    #vna-topbar {
+      min-height: 44px;
+      padding: 8px 4%;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    #vna-topbar .tb-left {
+      gap: 14px;
+    }
+
+    #vna-topbar .tb-item {
+      font-size: .78rem;
+    }
+
+    #vna-topbar .tb-item.tb-hide-mob {
+      display: none;
+    }
+
+    #vna-topbar .tb-phone {
+      font-size: .85rem;
+    }
+
+    #vna-topbar .nabh-badge {
+      font-size: .7rem;
+      padding: 4px 10px;
+    }
+
+    #vna-topbar .nabh-badge img {
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #vna-topbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 4%;
+      gap: 6px;
+    }
+
+    #vna-topbar .tb-left {
+      gap: 10px;
+    }
+
+    #vna-topbar .tb-right {
+      gap: 10px;
+    }
+  }
+
+  /* ── MAIN HEADER ── */
+  #vna-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e4e9f0;
+    box-shadow: 0 2px 16px rgba(27, 75, 138, .07);
+    width: 100%;
+    position: relative;
+    z-index: 9999;
+  }
+
+  #vna-header.scrolled {
+    box-shadow: 0 4px 32px rgba(27, 75, 138, .12);
+  }
+
+  #vna-header-inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0 5%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  /* ── LOGO ── */
+  .vna-logo-wrap {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    text-decoration: none !important;
+  }
+
+  .vna-logo-wrap img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .vna-logo-wrap .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .vna-logo-wrap .logo-text strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1B4B8A;
+    letter-spacing: -.01em;
+  }
+
+  .vna-logo-wrap .logo-text span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .68rem;
+    font-weight: 500;
+    color: #6B7280;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* ── DESKTOP NAV ── */
+  #vna-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #vna-nav>li {
+    position: relative;
+  }
+
+  #vna-nav>li>a,
+  #vna-nav>li>button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    font-weight: 600;
+    color: #1A1A2E;
+    padding: 10px 13px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .22s, color .22s;
+    letter-spacing: .01em;
+    line-height: 1;
+  }
+
+  #vna-nav>li>a:hover,
+  #vna-nav>li>button:hover,
+  #vna-nav>li.vna-open>a,
+  #vna-nav>li.vna-open>button {
+    background: #e8f0fb;
+    color: #1B4B8A;
+  }
+
+  .vna-caret {
+    width: 14px;
+    height: 14px;
+    transition: transform .22s;
+    flex-shrink: 0;
+  }
+
+  #vna-nav>li.vna-open .vna-caret {
+    transform: rotate(180deg);
+  }
+
+  /* ── BOOK BUTTON ── */
+  .vna-book-btn {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: .85rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    background: #2E9E4F !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    border: none !important;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none !important;
+    flex-shrink: 0;
+    margin-left: 8px;
+    line-height: 1 !important;
+  }
+
+  .vna-book-btn:hover {
+    background: #26883f !important;
+  }
+
+  /* ── MEGA MENU ──
+     BUG 2 FIX: JS se <body> mein append hoga
+     isliye position:fixed hamesha true viewport se calculate hoga
+     file://, WordPress, kisi bhi theme mein correctly kaam karega
+  ── */
+  .vna-mega {
+    display: none;
+    position: fixed;
+    width: 780px;
+    max-width: 94vw;
+    background: #ffffff;
+    border: 1px solid #e4e9f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 48px rgba(27, 75, 138, .18);
+    padding: 24px 28px;
+    opacity: 0;
+    transform: translateY(-6px);
+    /* BUG 4 FIX: transition dono properties par — opacity + transform */
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 999999;
+    pointer-events: none;
+  }
+
+  .vna-mega.vna-mega-visible {
+    display: block;
+  }
+
+  .vna-mega.vna-mega-shown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ── DEPARTMENTS FLAT GRID ── */
+  .vna-dept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .vna-dept-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .855rem;
+    font-weight: 500;
+    color: #1A1A2E;
+    border-radius: 8px;
+    transition: background .22s, color .22s;
+    line-height: 1.35;
+    text-decoration: none !important;
+  }
+
+  .vna-dept-link::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2E9E4F;
+    flex-shrink: 0;
+  }
+
+  .vna-dept-link:hover {
+    background: #e8f0fb;
+    color: #1B4B8A;
+  }
+
+  .vna-dept-link:hover::before {
+    background: #1B4B8A;
+  }
+
+  .vna-dept-link.no-link {
+    color: #6B7280;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .vna-dept-link.no-link::before {
+    background: #d1d5db;
+  }
+
+  /* ── HAMBURGER ── */
+  #vna-hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: #e8f0fb;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    padding: 0;
+    z-index: 10001;
+    position: relative;
+  }
+
+  #vna-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: #1B4B8A;
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+    pointer-events: none;
+  }
+
+  #vna-hamburger.vna-active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  #vna-hamburger.vna-active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #vna-hamburger.vna-active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* ── OVERLAY ── */
+  #vna-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 99997;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* ── DRAWER ── */
+  #vna-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(360px, 92vw);
+    height: 100%;
+    background: #ffffff;
+    z-index: 99998;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: -4px 0 32px rgba(27, 75, 138, .2);
+    transform: translateX(100%);
+    transition: transform .32s cubic-bezier(.4, 0, .2, 1);
+  }
+
+  #vna-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e4e9f0;
+    flex-shrink: 0;
+  }
+
+  #vna-drawer-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #e8f0fb;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1B4B8A;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    flex-shrink: 0;
+  }
+
+  #vna-drawer-scroll {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0 24px;
+  }
+
+  /* ── MOBILE MENU ITEMS ── */
+  .vmob-item {
+    border-bottom: 1px solid #e4e9f0;
+  }
+
+  .vmob-item:last-child {
+    border-bottom: none;
+  }
+
+  .vmob-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    color: #1A1A2E;
+    width: 100%;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vmob-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    color: #1A1A2E;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  .vmob-toggle svg {
+    flex-shrink: 0;
+    transition: transform .25s;
+  }
+
+  .vmob-toggle.vna-active {
+    background: #e8f0fb;
+    color: #1B4B8A;
+  }
+
+  .vmob-toggle.vna-active svg {
+    transform: rotate(180deg);
+  }
+
+  /*
+    BUG 3 FIX: display:none/block ki jagah max-height transition use kiya
+    display toggle se overflow:hidden conflict hota tha — animation nahi hoti thi
+    max-height: 0 → max-height: 800px smooth animate hota hai
+  */
+  .vmob-sub {
+    background: #fafbff;
+    border-top: 1px solid #e4e9f0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .32s ease;
+  }
+
+  .vmob-sub.vmob-sub-open {
+    max-height: 900px;
+  }
+
+  .vmob-sub a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .875rem;
+    font-weight: 500;
+    color: #1A1A2E;
+    border-bottom: 1px solid #e4e9f0;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vmob-sub a::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2E9E4F;
+    flex-shrink: 0;
+  }
+
+  .vmob-sub a:last-child {
+    border-bottom: none;
+  }
+
+  .vmob-sub a:active {
+    background: #e8f0fb;
+    color: #1B4B8A;
+  }
+
+  .vmob-sub a.no-link {
+    color: #9ca3af;
+    pointer-events: none;
+  }
+
+  .vmob-sub a.no-link::before {
+    background: #d1d5db;
+  }
+
+  /* ── DRAWER CTA ── */
+  #vna-drawer-cta {
+    padding: 16px 20px;
+    flex-shrink: 0;
+    border-top: 1px solid #e4e9f0;
+  }
+
+  #vna-drawer-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    background: #2E9E4F;
+    color: #ffffff !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #vna-nav {
+      display: none !important;
+    }
+
+    .vna-book-btn.desk-only {
+      display: none !important;
+    }
+
+    #vna-hamburger {
+      display: flex !important;
+    }
+
+    #vna-header-inner {
+      height: 60px !important;
+    }
+  }
+
+  @media (max-width: 1160px) {
+
+    #vna-nav>li>a,
+    #vna-nav>li>button {
+      font-size: .83rem;
+      padding: 10px;
+    }
+
+    .vna-mega {
+      width: 680px;
+    }
+
+    .vna-dept-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .vna-logo-wrap .logo-text {
+      display: none !important;
+    }
+  }
+</style>
+
+<!-- ── WRAPPER ── -->
+<div id="vna-wrap">
+
+  <!-- TOP BAR -->
+  <div id="vna-topbar">
+    <div class="tb-left">
+      <span class="tb-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        Malviya Nagar, New Delhi
+      </span>
+      <span class="tb-item tb-hide-mob">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        24×7 Emergency Care
+      </span>
+    </div>
+    <div class="tb-right">
+      <span class="nabh-badge">
+        <img src="https://stage.vnahospital.com/wp-content/uploads/2026/03/nabh.webp" alt="NABH"
+          style="height:22px;width:auto;display:block;flex-shrink:0;" />
+        NABH Certified
+      </span>
+      <a href="tel:+918068166666" class="tb-phone">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path
+            d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+        </svg>
+        +91 80 681 66666
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header id="vna-header">
+    <div id="vna-header-inner">
+
+      <a href="https://stage.vnahospital.com/" class="vna-logo-wrap" aria-label="VNA Hospital">
+        <img src="https://www.vnahospital.com/wp-content/uploads/2022/06/cropped-VNA-Insignia_site.png"
+          alt="VNA Hospital Logo" loading="eager" width="44" height="44" onerror="this.style.display='none'" />
+        <div class="logo-text">
+          <strong>VNA Hospital</strong>
+          <span>Better Care Begins Here</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul id="vna-nav">
+          <li><a href="https://stage.vnahospital.com/">Home</a></li>
+          <li id="vna-dept-li">
+            <button id="vna-dept-btn" type="button" aria-haspopup="true" aria-expanded="false">
+              Departments
+              <svg class="vna-caret" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+            <!-- Mega menu — JS will move this to <body> -->
+            <div class="vna-mega" id="vna-mega-menu">
+              <div class="vna-dept-grid">
+                <a href="https://stage.vnahospital.com/family-physician/" class="vna-dept-link">Family Physician</a>
+                <a href="https://stage.vnahospital.com/internal-medicine-geriatric-medicine/"
+                  class="vna-dept-link">Internal Medicine &amp; Geriatric Medicine</a>
+                <a href="https://stage.vnahospital.com/hdu-geriatric-care/" class="vna-dept-link">HDU &amp; Geriatric
+                  Care</a>
+                <a href="https://stage.vnahospital.com/laparoscopic-colorectal-general-surgery/"
+                  class="vna-dept-link">Laparoscopic Colorectal &amp; General Surgery</a>
+                <a href="https://stage.vnahospital.com/plastic-cosmetic-surgery/" class="vna-dept-link">Plastic &amp;
+                  Cosmetic Surgeon</a>
+                <a href="https://stage.vnahospital.com/gynecology-obstetrics/" class="vna-dept-link">Gynecology
+                  Obstetrics</a>
+                <a href="#" class="vna-dept-link no-link">Pediatrics</a>
+                <a href="#" class="vna-dept-link no-link">Urology, Andrology, Male Infertility &amp; Sexologist</a>
+                <a href="#" class="vna-dept-link no-link">Joint Replacement</a>
+                <a href="#" class="vna-dept-link no-link">ENT</a>
+                <a href="#" class="vna-dept-link no-link">Nephrologist</a>
+                <a href="#" class="vna-dept-link no-link">Dental</a>
+                <a href="#" class="vna-dept-link no-link">Physiotherapy and Rehabilitation</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="https://stage.vnahospital.com/doctors/">Doctors</a></li>
+          <li><a href="https://stage.vnahospital.com/why-vna/">Why VNA</a></li>
+          <li><a href="https://stage.vnahospital.com/contact-us/">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://stage.vnahospital.com/contact-us/" class="vna-book-btn desk-only">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        Book Appointment
+      </a>
+
+      <button id="vna-hamburger" type="button" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+</div>
+
+<!-- OVERLAY -->
+<div id="vna-overlay"></div>
+
+<!-- DRAWER -->
+<div id="vna-drawer">
+  <div id="vna-drawer-head">
+    <a href="https://stage.vnahospital.com/" class="vna-logo-wrap">
+      <img src="https://www.vnahospital.com/wp-content/uploads/2022/06/cropped-VNA-Insignia_site.png" alt="VNA Hospital"
+        width="36" height="36" onerror="this.style.display='none'" />
+      <div class="logo-text">
+        <strong>VNA Hospital</strong>
+        <span>Better Care Begins Here</span>
+      </div>
+    </a>
+    <button id="vna-drawer-close" type="button" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="vna-drawer-scroll">
+    <div class="vmob-item">
+      <a href="https://stage.vnahospital.com/" class="vmob-link">Home</a>
+    </div>
+    <div class="vmob-item">
+      <button class="vmob-toggle" type="button">
+        Departments
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div class="vmob-sub">
+        <a href="https://stage.vnahospital.com/family-physician/">Family Physician</a>
+        <a href="https://stage.vnahospital.com/internal-medicine-geriatric-medicine/">Internal Medicine &amp; Geriatric
+          Medicine</a>
+        <a href="https://stage.vnahospital.com/hdu-geriatric-care/">HDU &amp; Geriatric Care</a>
+        <a href="https://stage.vnahospital.com/laparoscopic-colorectal-general-surgery/">Laparoscopic Colorectal &amp;
+          General Surgery</a>
+        <a href="https://stage.vnahospital.com/plastic-cosmetic-surgery/">Plastic &amp; Cosmetic Surgeon</a>
+        <a href="https://stage.vnahospital.com/gynecology-obstetrics/">Gynecology Obstetrics</a>
+        <a href="#" class="no-link">Pediatrics</a>
+        <a href="#" class="no-link">Urology, Andrology, Male Infertility &amp; Sexologist</a>
+        <a href="#" class="no-link">Joint Replacement</a>
+        <a href="#" class="no-link">ENT</a>
+        <a href="#" class="no-link">Nephrologist</a>
+        <a href="#" class="no-link">Dental</a>
+        <a href="#" class="no-link">Physiotherapy and Rehabilitation</a>
+      </div>
+    </div>
+    <div class="vmob-item">
+      <a href="https://stage.vnahospital.com/doctors/" class="vmob-link">Doctors</a>
+    </div>
+    <div class="vmob-item">
+      <a href="https://stage.vnahospital.com/why-vna/" class="vmob-link">Why VNA</a>
+    </div>
+    <div class="vmob-item">
+      <a href="https://stage.vnahospital.com/contact-us/" class="vmob-link">Contact</a>
+    </div>
+  </div>
+
+  <div id="vna-drawer-cta">
+    <a href="https://stage.vnahospital.com/contact-us/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+      Book Appointment
+    </a>
+  </div>
+</div>
+
+<script>
+  /*
+    ============================================================
+    VNA HOSPITAL HEADER — ALL 6 BUGS FIXED
+    ============================================================
+    BUG 1 FIXED : setTimeout(300) hata ke IIFE use kiya
+                  DOM ready pe seedha execute hoga, koi race condition nahi
+    BUG 2 FIXED : document.body.appendChild(mega) — mega DOM se nikaal ke
+                  body mein daal diya, position:fixed ab file:// aur
+                  WordPress dono mein sahi kaam karega
+    BUG 3 FIXED : display:none/block ki jagah max-height CSS transition
+                  use ki — smooth open/close animation har browser mein
+    BUG 4 FIXED : Double requestAnimationFrame — pehla display:block
+                  paint karta hai, doosra opacity transition start karta hai
+    BUG 5 FIXED : ESC key mein closeMega() call ki — poora cleanup hoga
+                  (vna-mega-shown, vna-mega-visible dono classes reset)
+    BUG 6 FIXED : scroll/resize listeners mein { passive: true } add kiya
+                  mobile scroll performance improve hogi
+    ============================================================
+  */
+  (function () {
+
+    /* ── DOM REFS ─────────────────────────────────────────── */
+    var burger = document.getElementById('vna-hamburger');
+    var drawer = document.getElementById('vna-drawer');
+    var overlay = document.getElementById('vna-overlay');
+    var closeB = document.getElementById('vna-drawer-close');
+    var header = document.getElementById('vna-header');
+    var deptBtn = document.getElementById('vna-dept-btn');
+    var deptLi = document.getElementById('vna-dept-li');
+    var mega = document.getElementById('vna-mega-menu');
+
+    if (!burger || !drawer) return;
+
+    /* ── DRAWER ───────────────────────────────────────────── */
+    var drawerOpen = false;
+
+    /* Initial state */
+    drawer.style.transform = 'translateX(100%)';
+    drawer.style.display = 'none';
+
+    function openDrawer() {
+      drawerOpen = true;
+      drawer.style.display = 'flex';
+      overlay.style.display = 'block';
+      /* rAF ensures display:flex is painted before transform animates */
+      requestAnimationFrame(function () {
+        drawer.style.transform = 'translateX(0)';
+      });
+      burger.classList.add('vna-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawerOpen = false;
+      drawer.style.transform = 'translateX(100%)';
+      overlay.style.display = 'none';
+      burger.classList.remove('vna-active');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        if (!drawerOpen) drawer.style.display = 'none';
+      }, 340);
+    }
+
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      drawerOpen ? closeDrawer() : openDrawer();
+    });
+
+    if (closeB) {
+      closeB.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeDrawer();
+      });
+    }
+
+    overlay.addEventListener('click', closeDrawer);
+
+    /* ── MOBILE ACCORDION ─────────────────────────────────── */
+    /*
+      BUG 3 FIX: display:none/block hata ke class-based max-height
+      transition use ki — CSS se smooth animate hogi
+    */
+    var toggles = document.querySelectorAll('.vmob-toggle');
+
+    for (var i = 0; i < toggles.length; i++) {
+      toggles[i].addEventListener('click', function (e) {
+        e.stopPropagation();
+        var btn = this;
+        var item = btn.parentNode;
+        var sub = item.querySelector('.vmob-sub');
+        if (!sub) return;
+
+        var isOpen = sub.classList.contains('vmob-sub-open');
+
+        /* Close all submenus first */
+        for (var j = 0; j < toggles.length; j++) {
+          var otherSub = toggles[j].parentNode.querySelector('.vmob-sub');
+          if (otherSub) otherSub.classList.remove('vmob-sub-open');
+          toggles[j].classList.remove('vna-active');
+        }
+
+        /* Toggle current one */
+        if (!isOpen) {
+          sub.classList.add('vmob-sub-open');
+          btn.classList.add('vna-active');
+        }
+      });
+    }
+
+    /* ── DESKTOP MEGA MENU ────────────────────────────────── */
+    if (deptBtn && deptLi && mega) {
+
+      /*
+        BUG 2 FIX: mega ko body mein append karo
+        Kisi bhi parent ka transform/overflow/z-index ab mega ko
+        clip nahi kar sakta — position:fixed hamesha viewport se calculate hoga
+        file:// protocol aur WordPress dono mein perfectly kaam karega
+      */
+      document.body.appendChild(mega);
+
+      function positionMega() {
+        var r = deptBtn.getBoundingClientRect();
+        var menuW = Math.min(780, window.innerWidth * 0.94);
+        var left = r.left + r.width / 2 - menuW / 2;
+        /* Viewport edges se bahar nahi jaayega */
+        left = Math.max(12, Math.min(left, window.innerWidth - menuW - 12));
+        mega.style.width = menuW + 'px';
+        mega.style.top = (r.bottom + 8) + 'px';
+        mega.style.left = left + 'px';
+      }
+
+      function openMega() {
+        positionMega();
+        mega.classList.add('vna-mega-visible');
+        /*
+          BUG 4 FIX: Double rAF
+          1st rAF — display:block browser paint karta hai
+          2nd rAF — ab opacity + transform transition safely start hoti hai
+          Single rAF se dono ek saath ho jaate the, fade-in nazar nahi aata tha
+        */
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            mega.classList.add('vna-mega-shown');
+          });
+        });
+        deptBtn.setAttribute('aria-expanded', 'true');
+        deptLi.classList.add('vna-open');
+      }
+
+      function closeMega() {
+        mega.classList.remove('vna-mega-shown');
+        deptBtn.setAttribute('aria-expanded', 'false');
+        deptLi.classList.remove('vna-open');
+        /* Wait for opacity transition to finish, then hide */
+        setTimeout(function () {
+          mega.classList.remove('vna-mega-visible');
+        }, 220);
+      }
+
+      deptBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        deptLi.classList.contains('vna-open') ? closeMega() : openMega();
+      });
+
+      /* Close on outside click — mega is now detached from deptLi in DOM */
+      document.addEventListener('click', function (e) {
+        if (!deptLi.contains(e.target) && !mega.contains(e.target)) {
+          if (deptLi.classList.contains('vna-open')) closeMega();
+        }
+      });
+
+      /*
+        BUG 6 FIX: { passive: true } add kiya
+        Browser ko pata chalega ye listener scroll cancel nahi karega
+        Mobile pe scroll performance improve hogi
+      */
+      window.addEventListener('scroll', function () {
+        if (deptLi.classList.contains('vna-open')) positionMega();
+      }, { passive: true });
+
+      window.addEventListener('resize', function () {
+        if (deptLi.classList.contains('vna-open')) positionMega();
+      }, { passive: true });
+
+      /* ── ESC KEY ──────────────────────────────────────────
+        BUG 5 FIX: Pehle sirf deptLi.classList.remove('vna-open') tha
+        Mega ke DOM classes (vna-mega-shown, vna-mega-visible) reset nahi hote the
+        Ab closeMega() call ki — poora cleanup hoga
+      ── */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeDrawer();
+          if (deptLi.classList.contains('vna-open')) {
+            closeMega();
+          }
+        }
+      });
+    }
+
+    /* ── SCROLL SHADOW ────────────────────────────────────── */
+    if (header) {
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true }); /* BUG 6 FIX: passive:true here also */
+    }
+
+  })();
+  /* ── END: BUG 1 FIX — IIFE use kiya, setTimeout(300) hata diya ── */
+</script>

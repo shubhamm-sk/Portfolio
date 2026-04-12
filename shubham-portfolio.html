@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Kumar | Frontend Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --card-bg-alt: #2a2a2a;
+            --accent-primary: #ff4d00;
+            --accent-secondary: #00d4ff;
+            --accent-tertiary: #ffe600;
+            --text-primary: #fafafa;
+            --text-muted: #888888;
+            --border-color: #2a2a2a;
+            --radius: 2px;
+            --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .clash {
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 700;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        #cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* --- Section Label --- */
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background-color: var(--accent-primary);
+            margin-right: 12px;
+        }
+
+        /* --- Buttons --- */
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: var(--radius);
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .btn-black {
+            background-color: var(--accent-primary);
+            color: #fff;
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .btn-outline {
+            border-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        .btn-pill:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 5px 5px 0 var(--accent-primary);
+        }
+        
+        .btn-white:hover {
+            box-shadow: 5px 5px 0 #fff;
+        }
+
+        /* --- Animations --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAV --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 60px;
+            mix-blend-mode: difference;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-left {
+            padding: 180px 60px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-name {
+            font-size: clamp(52px, 5vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--accent-primary);
+        }
+
+        .hero-role {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-desc {
+            max-width: 420px;
+            font-size: 16px;
+            margin-bottom: 48px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            gap: 30px;
+        }
+
+        .stat-val {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .hero-right {
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .hero-photo-wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: grayscale(20%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #0a0a0a 0%, transparent 30%, transparent 70%, #0a0a0a 100%);
+            pointer-events: none;
+        }
+
+        .floating-badge {
+            position: absolute;
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-tr {
+            top: 60px;
+            right: 40px;
+            background: #000;
+            border: 1px solid var(--accent-primary);
+        }
+
+        .badge-br {
+            bottom: 100px;
+            right: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--accent-secondary);
+            color: var(--accent-secondary);
+        }
+
+        .hero-accent-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #ff4d00, #00d4ff, #ffe600);
+        }
+
+        /* --- TICKER --- */
+        .ticker-bar {
+            width: 100%;
+            background-color: var(--accent-primary);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 14px 0;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-right: 40px;
+        }
+
+        /* --- SKILLS --- */
+        .section-padding { padding: 120px 80px; }
+        .section-header { margin-bottom: 60px; }
+        .section-title { font-size: clamp(36px, 4vw, 60px); max-width: 800px; }
+        .section-title em { font-style: normal; color: var(--accent-primary); }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+        .skill-card { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 32px 28px; position: relative; transition: var(--transition); }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; transform: scaleX(0); transition: var(--transition); }
+        .skill-card:nth-child(1)::before { background: var(--accent-primary); }
+        .skill-card:nth-child(2)::before { background: var(--accent-secondary); }
+        .skill-card:nth-child(3)::before { background: var(--accent-tertiary); }
+        .skill-card:nth-child(4)::before { background: #a855f7; }
+        .skill-card:hover { transform: translateY(-4px); background-color: var(--card-bg-alt); border-color: rgba(255, 77, 0, 0.3); }
+        .skill-card:hover::before { transform: scaleX(1); }
+        .skill-icon { width: 48px; height: 48px; margin-bottom: 24px; filter: grayscale(100%) brightness(150%); }
+
+        /* --- EXPERIENCE --- */
+        .exp-section { background-color: var(--card-bg); display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; }
+        .exp-item { padding-left: 24px; padding-bottom: 60px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 40px; }
+        .exp-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; background-color: var(--accent-primary); border-radius: 50%; }
+        .exp-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--accent-primary); margin-bottom: 8px; display: block; }
+        .exp-role { font-size: 22px; margin-bottom: 4px; }
+        .exp-company { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; display: block; }
+        .exp-content li { position: relative; padding-left: 20px; margin-bottom: 6px; font-size: 14px; color: var(--text-muted); }
+        .exp-content li::before { content: '→'; position: absolute; left: 0; color: var(--accent-primary); }
+        .metric-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 28px; margin-bottom: 20px; }
+
+        /* --- PROJECTS --- */
+        .proj-card { display: grid; grid-template-columns: 1fr 1.2fr; border: 1px solid var(--border-color); overflow: hidden; transition: var(--transition); border-bottom: none; }
+        .proj-card:last-child { border-bottom: 1px solid var(--border-color); }
+        .proj-info { padding: 48px 40px; background-color: var(--bg-color); }
+        .proj-num { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-muted); margin-bottom: 16px; display: block; }
+        .proj-desc { font-size: 13px; color: #aaa; margin-bottom: 32px; line-height: 1.7; }
+        .proj-tags { display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tag { font-family: 'Space Mono', monospace; font-size: 10px; padding: 6px 12px; background-color: #000; border: 1px solid rgba(255,255,255,0.1); }
+        .proj-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .pm-val { font-size: 20px; color: var(--accent-primary); display: block; }
+        .pm-label { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-muted); }
+        .proj-img { position: relative; overflow: hidden; }
+        .proj-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%) brightness(0.8); transition: 0.8s var(--transition); transform: scale(1.05); }
+        .proj-img-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--bg-color) 0%, transparent 40%); pointer-events: none; }
+        .proj-card:hover .proj-img img { filter: grayscale(0) brightness(1); transform: scale(1); }
+
+        /* --- ACHIEVEMENTS --- */
+        .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+        .ach-card { background-color: var(--card-bg); padding: 48px 36px; position: relative; transition: var(--transition); }
+        .ach-num { font-size: 64px; display: block; margin-bottom: 24px; }
+        .ach-title { font-size: 16px; margin-bottom: 12px; }
+        .ach-desc { font-size: 12px; color: var(--text-muted); }
+
+        /* --- FAQ --- */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        details { background-color: var(--card-bg); border: 1px solid var(--border-color); }
+        summary { padding: 28px 32px; font-family: 'Clash Display', sans-serif; font-size: 17px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-family: 'Space Mono', monospace; font-size: 20px; color: var(--accent-primary); }
+        details[open] summary::after { content: '−'; }
+        .faq-ans { padding: 0 32px 28px; font-size: 14px; color: #aaa; line-height: 1.7; }
+
+        /* --- CTA --- */
+        .cta-section { background-color: var(--card-bg); text-align: center; position: relative; padding: 100px 80px; }
+        .cta-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 200px; opacity: 0.02; z-index: 0; pointer-events: none; }
+
+        /* --- FOOTER --- */
+        .footer { padding: 60px 80px; border-top: 1px solid var(--border-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 40px; display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-muted); }
+
+        @media (max-width: 1024px) {
+            .navbar { padding: 20px 24px; }
+            .nav-links { display: none; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-left { padding: 120px 24px 60px; }
+            .hero-right { height: 400px; }
+            .section-padding { padding: 80px 24px; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .exp-section { grid-template-columns: 1fr; gap: 40px; }
+            .proj-card { grid-template-columns: 1fr; }
+            .proj-img { order: -1; min-height: 220px; }
+            .achievements-grid { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">SK.dev</a>
+            <div class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#career">Experience</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="btn-pill btn-black">Hire Me</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-left">
+                <span class="section-label">Available for work</span>
+                <h1 class="hero-name">Shubham<br>Kumar.</h1>
+                <p class="hero-role mono">Frontend Developer</p>
+                <p class="hero-desc">I build blazing-fast, animated websites with GSAP, WordPress & Core Web Vitals. 2+ years turning complex briefs into production-grade frontends.</p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn-pill btn-white">View My Work</a>
+                    <a href="#contact" class="btn-pill btn-outline">Book a Call</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-val clash">10+</span>
+                        <span class="stat-label">Live Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-val clash">90+</span>
+                        <span class="stat-label">PageSpeed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-val clash">50%</span>
+                        <span class="stat-label">Load Reduction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-photo-wrap">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAkACQAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAIhAzwDASIAAhEBAxEB/8QAHAAAAwADAQEBAAAAAAAAAAAAAAECAwQFBgcI/8QAShAAAgEDAgMFBQUFBQUHBAMAAAECAwQREiEFMUEGEyJRYQcycYGRFCNCobEzUsHR8BVDYnLhJDSCovEIJTVTY3OSFkR0sjbC8v/EABoBAQEBAQEBAQAAAAAAAAAAAAABAgMEBQb/xAAnEQEAAgICAgEEAgMBAAAAAAAAAQIDEQQhEjEiExRBUTJSQmFaceF66+p9yO7O7ezO7O7eY798A+Bg9SJwVFDiio+QFIcQSKiiKmKLSKURpAEUGClErSQRgpFYHgKSLwEUWkAkOCGolJYAWBxKwPT0IJwWkOKKwQ0lRL0lRiVFEVGB4LwkPAVMUUkPBaj4TIjA4orSVgBRLCKHFEQsBgrA4xAjHyKwVgpICMFRRWAwAkh4HFFYAlLoPA8FegCwGBlRQE4DBkSDBFJDwMZELAsFAFLAzFK6oU9pzjD47Fwq05e7OL+ARQD2DACx0DA9hgTgYYGAvQB4DACAsAIGigwBOBNFhgCcBFF4DAEYArAYAkCsBgCMBgvAsARgMFYDAE4DBWAwBOBYKwLAGNoWDJgMAYhYM2kWC7GFoWky6CWiqxYDBkwGAjFgWDLpFgDC0TgzaSdIGLBGgz4JcQMGBYMzj4ScFGLBJlwS0FYsEsyYDSaGEhozaUTgQmmDBODK0GPCa2mmHkTgyuJOAORsIrBcUjaJxgqKKihpEAl0Gh4GkFOKLSEl0LWxAsDRQ8AKKMkYhBeEtbATpGkUOKANK6BFFYHFECiisDQyCS0g0mRRAEsDQ4orBFTgaRWBxRkLBUQHFAGBxQxrYgEPA0MASHgMDAmKHgoeAJih4KwGAEh4GUBGB4LFgKIouKEUQAAGAiJ1IUaUqlSUYQgstvZJI8Nxb2l/Z9UuF8EuuI0Itrv193T26pvmhe0nt3Y9mbBW8qUbq4q8qL93bz+B+e+1fb7jHGZzU7qXcy9yjT8MYLy2LED6xX9udJ1pU5wq2TXTuFL889Pgcmt7cuIKemjOE10dSkln4JHwardVnW7xSkjPC4xUVSpOWWuvIuk2+o3/tk4jxKjKVe1pJ4w+7g2v12OfZ9vp91BurO2qRaT7vbZngbi4oPMoVY05vyllfpsa3e/inc0/lEi7fXqPtR47w6svs3GO8ts+5W5per5P5Hd4T7cOJuX+0dxUWdvh8P9fkfBYXEFP8Aa5XRG5RqLupPTo2zt5F0m36etPbHw+vFK5pRozSz72zx5bHtuEdpuG8Zhm1uKbehS0dUn6H43pcYqU493rz1R2+z/aq5s9FelcShUp58HRxbxt5YJpX7HA+b9hfaAuI6LS7nHxJd0/jtj5M+id5D96O/ImhkDAIZAAMAEMBgIMDAAEMAEMMAACwMAFgBgBOAwULAE4DBQATgWCgAjAsF4ADHgMF4DAEYJwZMCwUY8CwZMBjAViwLBkwLBUY2icGVonAGPBLRlwTgDDgWDLoLeavefffH" class="hero-photo" alt="Shubham Kumar">
+                    <div class="hero-overlay"></div>
+                    <div class="floating-badge badge-tr mono">
+                        <span style="font-size: 24px; display: block;">92</span>
+                        <span style="font-size: 8px;">PageSpeed Score</span>
+                    </div>
+                    <div class="floating-badge badge-br mono">
+                        <span>✓ Core Web Vitals Pass</span>
+                    </div>
+                    <div class="hero-accent-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ticker-bar">
+            <div class="ticker-content">
+                <span class="ticker-item">◆ JAVASCRIPT ES6+</span>
+                <span class="ticker-item">◆ GSAP</span>
+                <span class="ticker-item">◆ SCROLLTRIGGER</span>
+                <span class="ticker-item">◆ WORDPRESS</span>
+                <span class="ticker-item">◆ CSS3</span>
+                <span class="ticker-item">◆ CORE WEB VITALS</span>
+                <span class="ticker-item">◆ PERFORMANCE</span>
+                <span class="ticker-item">◆ SEO</span>
+                <span class="ticker-item">◆ REACT.JS</span>
+                <span class="ticker-item">◆ NODE.JS</span>
+                <span class="ticker-item">◆ MONGODB</span>
+                <span class="ticker-item">◆ NEXT.JS</span>
+                <!-- Double for loop -->
+                <span class="ticker-item">◆ JAVASCRIPT ES6+</span>
+                <span class="ticker-item">◆ GSAP</span>
+                <span class="ticker-item">◆ SCROLLTRIGGER</span>
+                <span class="ticker-item">◆ WORDPRESS</span>
+                <span class="ticker-item">◆ CSS3</span>
+                <span class="ticker-item">◆ CORE WEB VITALS</span>
+                <span class="ticker-item">◆ PERFORMANCE</span>
+                <span class="ticker-item">◆ SEO</span>
+                <span class="ticker-item">◆ REACT.JS</span>
+                <span class="ticker-item">◆ NODE.JS</span>
+                <span class="ticker-item">◆ MONGODB</span>
+                <span class="ticker-item">◆ NEXT.JS</span>
+            </div>
+        </div>
+
+        <section id="skills" class="section-padding fade-up">
+            <div class="section-header">
+                <span class="section-label">Expertise</span>
+                <h2 class="section-title">What I <em>Build</em> & How I Do It</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=96&q=80" alt="GSAP">
+                    </div>
+                    <h4 class="clash">GSAP Animations</h4>
+                    <p>High-performance scroll-based motion and interactive experiences using ScrollTrigger.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=96&q=80" alt="WP">
+                    </div>
+                    <h4 class="clash">WordPress Dev</h4>
+                    <p>Custom theme development with clean code and high-performance optimizations.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=96&q=80" alt="Perf">
+                    </div>
+                    <h4 class="clash">Performance</h4>
+                    <p>Mastering Core Web Vitals to achieve 90+ PageSpeed scores on real production sites.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07d?w=96&q=80" alt="SEO">
+                    </div>
+                    <h4 class="clash">SEO & Debugging</h4>
+                    <p>Structured data, on-page optimization, and deep technical debugging for clean delivery.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="career" class="section-padding exp-section fade-up">
+            <div>
+                <div class="section-header">
+                    <span class="section-label">Career</span>
+                    <h2 class="section-title">From <em>Learning</em> to Leading</h2>
+                </div>
+                <div class="timeline">
+                    <div class="exp-item active">
+                        <span class="exp-date">Dec 2025–Present</span>
+                        <h3 class="exp-role clash">Web Developer</h3>
+                        <span class="exp-company">SurgeAIO, Gurugram</span>
+                        <ul class="exp-content">
+                            <li>Implemented GSAP ScrollTrigger animations from scratch</li>
+                            <li>Achieved Core Web Vitals 90+ on production sites</li>
+                            <li>Reduced load time 40% via conditional script loading</li>
+                        </ul>
+                    </div>
+                    <div class="exp-item">
+                        <span class="exp-date">Jul 2024–Nov 2025</span>
+                        <h3 class="exp-role clash">Junior Frontend Developer</h3>
+                        <span class="exp-company">Weblitt & Digital Next</span>
+                        <ul class="exp-content">
+                            <li>Delivered 10+ responsive websites across industries</li>
+                            <li>Implemented on-page SEO structures and Schema markup</li>
+                        </ul>
+                    </div>
+                    <div class="exp-item">
+                        <span class="exp-date">Jan 2024–Jun 2024</span>
+                        <h3 class="exp-role clash">Frontend Intern</h3>
+                        <span class="exp-company">Magic Web World</span>
+                        <ul class="exp-content">
+                            <li>Learned WordPress theme development from ground up</li>
+                            <li>Built static pages and fixed cross-browser CSS issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="metrics-stack">
+                <div class="metric-card">
+                    <span class="clash" style="font-size: 48px;">90+</span>
+                    <p class="mono" style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">PageSpeed — Production</p>
+                </div>
+                <div class="metric-card">
+                    <span class="clash" style="font-size: 48px;">−50%</span>
+                    <p class="mono" style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">Load Time Reduction</p>
+                </div>
+                <div class="metric-card">
+                    <span class="clash" style="font-size: 32px;">BCA</span>
+                    <p class="mono" style="font-size: 10px; color: var(--text-muted); margin-top: 8px;">Vaish College of Engineering, Rohtak</p>
+                    <p style="font-size: 12px; margin-top: 8px;">JS Cert · React.js Cert</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section-padding fade-up">
+            <div class="section-header">
+                <span class="section-label">Work</span>
+                <h2 class="section-title">Production-Grade Sites, Not Just Mockups</h2>
+            </div>
+            <div class="projects-list">
+                <!-- Project 1 -->
+                <div class="proj-card">
+                    <div class="proj-info">
+                        <span class="proj-num">01 / Featured</span>
+                        <h3 class="clash">SurgeAIO — AI SEO Platform</h3>
+                        <p class="proj-desc">Built end-to-end. GSAP ScrollTrigger animations, resolved scroll conflicts, achieved Core Web Vitals 90+, reduced load time 40% via conditional script loading.</p>
+                        <div class="proj-tags">
+                            <span class="tag">WordPress</span>
+                            <span class="tag">GSAP</span>
+                            <span class="tag">ScrollTrigger</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                        <div class="proj-metrics">
+                            <div><span class="clash pm-val">92</span><span class="pm-label">PageSpeed</span></div>
+                            <div><span class="clash pm-val">1.2s</span><span class="pm-label">LCP</span></div>
+                            <div><span class="clash pm-val">40%</span><span class="pm-label">Faster</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="SurgeAIO">
+                        <div class="proj-img-overlay"></div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="proj-card">
+                    <div class="proj-info">
+                        <span class="proj-num">02 / Healthcare</span>
+                        <h3 class="clash">Air Medical 24x7</h3>
+                        <p class="proj-desc">A fast-loading medical services platform designed for speed and clarity.</p>
+                        <div class="proj-tags">
+                            <span class="tag">WordPress</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <div class="proj-metrics">
+                            <div><span class="clash pm-val">88</span><span class="pm-label">PageSpeed</span></div>
+                            <div><span class="clash pm-val">1.5s</span><span class="pm-label">LCP</span></div>
+                            <div><span class="clash pm-val">35%</span><span class="pm-label">Lift</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-img">
+                        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f3?w=800&q=80" alt="AirMedical">
+                        <div class="proj-img-overlay"></div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="proj-card">
+                    <div class="proj-info">
+                        <span class="proj-num">03 / E-Commerce</span>
+                        <h3 class="clash">UROHE Ethnic Wear</h3>
+                        <p class="proj-desc">Custom e-commerce build for a fashion brand with smooth parallax and motion effects.</p>
+                        <div class="proj-tags">
+                            <span class="tag">WooCommerce</span>
+                            <span class="tag">GSAP</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <div class="proj-metrics">
+                            <div><span class="clash pm-val">82</span><span class="pm-label">PageSpeed</span></div>
+                            <div><span class="clash pm-val">2.0s</span><span class="pm-label">LCP</span></div>
+                            <div><span class="clash pm-val">28%</span><span class="pm-label">SEO</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-img">
+                        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&q=80" alt="UROHE">
+                        <div class="proj-img-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding fade-up">
+            <div class="section-header">
+                <span class="section-label">Results</span>
+                <h2 class="section-title">The <em>Numbers</em> Speak Loud</h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="ach-card">
+                    <span class="clash ach-num" style="color: var(--accent-primary);">50%</span>
+                    <h5 class="ach-title clash">Load Time Reduction</h5>
+                    <p class="ach-desc">Across production sites via conditional loading</p>
+                </div>
+                <div class="ach-card">
+                    <span class="clash ach-num" style="color: var(--accent-secondary);">90+</span>
+                    <h5 class="ach-title clash">PageSpeed Score</h5>
+                    <p class="ach-desc">Consistent on mobile and desktop both</p>
+                </div>
+                <div class="ach-card">
+                    <span class="clash ach-num" style="color: var(--accent-tertiary);">10+</span>
+                    <h5 class="ach-title clash">Live Websites</h5>
+                    <p class="ach-desc">Healthcare, fashion, SaaS, logistics delivered</p>
+                </div>
+                <div class="ach-card span-2">
+                    <h5 class="clash" style="font-size: 36px; margin-bottom: 20px;">GSAP ScrollTrigger Expert</h5>
+                    <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8;">Building zero-jank animations that enhance user experience without sacrificing performance. specialized in pinned sections, parallax, and scroll-bound timelines.</p>
+                </div>
+                <div class="ach-card">
+                    <span class="clash ach-num" style="color: var(--text-muted);">2+</span>
+                    <h5 class="ach-title clash">Years Experience</h5>
+                    <p class="ach-desc">SurgeAIO · Weblitt · Digital Next</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding fade-up">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Common Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <details>
+                    <summary>Who is Shubham Kumar?</summary>
+                    <div class="faq-ans">Performance-focused Frontend Developer, 2+ years, WordPress + GSAP + Core Web Vitals. Currently at SurgeAIO, Gurugram.</div>
+                </details>
+                <details>
+                    <summary>GSAP & Animation Experience?</summary>
+                    <div class="faq-ans">GSAP & ScrollTrigger for scroll animations, pinned sections, 3D transforms, timeline orchestration. Debugs glitches, Elementor conflicts.</div>
+                </details>
+                <details>
+                    <summary>WordPress Development?</summary>
+                    <div class="faq-ans">Custom themes, wp_enqueue_script optimization, plugin conflict resolution, Elementor override systems. 10+ production sites.</div>
+                </details>
+                <details>
+                    <summary>Performance Optimization?</summary>
+                    <div class="faq-ans">Up to 50% load time reduction. LCP, CLS, TBT. PageSpeed 80–90+ on real production websites.</div>
+                </details>
+                <details>
+                    <summary>Education & Certifications?</summary>
+                    <div class="faq-ans">BCA from Vaish College of Engineering, Rohtak, Haryana. JavaScript Cert + React.js Cert.</div>
+                </details>
+                <details>
+                    <summary>Open to Full Stack work?</summary>
+                    <div class="faq-ans">Yes — React.js, Node.js, Express.js, MongoDB. Building SEO CRM systems with Next.js + Google Search Console API.</div>
+                </details>
+            </div>
+        </section>
+
+        <section id="contact" class="cta-section section-padding">
+            <div class="cta-watermark">HIRE ME</div>
+            <h2 class="section-title">Your Next Frontend Dev is <em>Right Here</em></h2>
+            <p class="cta-subtitle">Let's discuss how we can build something exceptional for your brand.</p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="mailto:shubham.kummar.sk@gmail.com" class="btn-pill btn-white">Send an Email</a>
+                <a href="tel:+919217740431" class="btn-pill btn-outline">+91 9217740431</a>
+            </div>
+            <p class="mono" style="font-size: 12px; margin-top: 40px; color: var(--text-muted);">Or reach out at <a href="mailto:shubham.kummar.sk@gmail.com" style="color: var(--accent-primary);">shubham.kummar.sk@gmail.com</a></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4 class="clash">Shubham Kumar</h4>
+                <p>I build blazing-fast, animated websites with GSAP, WordPress & Core Web Vitals.</p>
+                <div style="margin-top: 32px; font-size: 14px; color: var(--text-muted);">
+                    <p>Gurugram, HR, India</p>
+                    <p>shubham.kummar.sk@gmail.com</p>
+                    <p>+91 9217740431</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="clash">Experience</h4>
+                <ul class="footer-list">
+                    <li><a href="#">SurgeAIO</a></li>
+                    <li><a href="#">Weblitt & Digital Next</a></li>
+                    <li><a href="#">Magic Web World</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="clash">Skills</h4>
+                <ul class="footer-list">
+                    <li><a href="#">GSAP Animation</a></li>
+                    <li><a href="#">Core Web Vitals</a></li>
+                    <li><a href="#">WordPress Dev</a></li>
+                    <li><a href="#">MERN Stack</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SHUBHAM KUMAR. ALL RIGHTS RESERVED.</span>
+            <span>FRONTEND ARCHITECT</span>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            dot.style.transform = `translate(${mouseX - 6}px, ${mouseY - 6}px)`;
+        });
+
+        function animateRing() {
+            // Lerp effect for ring lag
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            
+            const currentWidth = parseInt(ring.style.width) || 40;
+            const currentHeight = parseInt(ring.style.height) || 40;
+            
+            ring.style.transform = `translate(${ringX - (currentWidth/2)}px, ${ringY - (currentHeight/2)}px)`;
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // Interactions for the cursor
+        const interactiveElements = document.querySelectorAll('a, button, details, summary, .skill-card, .proj-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                dot.style.width = '20px';
+                dot.style.height = '20px';
+                dot.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px)`;
+                
+                ring.style.width = '60px';
+                ring.style.height = '60px';
+                ring.style.borderColor = 'rgba(255, 77, 0, 0.4)';
+            });
+            el.addEventListener('mouseleave', () => {
+                dot.style.width = '12px';
+                dot.style.height = '12px';
+                dot.style.transform = `translate(${mouseX - 6}px, ${mouseY - 6}px)`;
+                
+                ring.style.width = '40px';
+                ring.style.height = '40px';
+                ring.style.borderColor = 'var(--accent-primary)';
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

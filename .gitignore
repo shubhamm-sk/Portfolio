@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Dependencies (if any were added later)
+node_modules/
+
+# Local env files
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Dist/Build (if applicable)
+dist/
+build/
